@@ -5,16 +5,21 @@
 import secrets
 import string
 
-def generate_password(length = 20):
+print("This is the Password Generator! ")
+
+def generate_password(length = 25):
+    length = int(input("Enter the length of your password: "))
+    if length <= 14:
+        print("This password is too short.")
+        return
+    elif length >= 65:
+        print("This password is too long.")
+        return
+
     full_list = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(secrets.choice(full_list) for i in range(length))
     return password
 
-print("This is the Password Generator! ")
+
 password = generate_password()
 print(f"generated password: {password}")
-# len = int(input("Enter a number for the length of the password:"))
-# if len < 15:
-#     print("This password length is too short.")
-# elif len > 64:
-#     print("This password is too long.")
